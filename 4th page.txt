@@ -1,0 +1,1799 @@
+4th page
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Product Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            padding: 0;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* === HEADER STYLES === */
+        .header-alibaba {
+            position: fixed;
+            width: 100%;
+            height: 86px;
+            top: 0;
+            background: #FFFFFF;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .logo-text span {
+            color: #3498db;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #FFFFFF;
+            border: 2px solid #E0E0E0;
+            border-radius: 6px;
+            overflow: hidden;
+            width: 600px;
+        }
+
+        .category-dropdown {
+            padding: 12px 20px;
+            background: #F8F9FA;
+            border: none;
+            border-right: 2px solid #E0E0E0;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1C1C1C;
+            cursor: pointer;
+            min-width: 140px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            color: #1C1C1C;
+        }
+
+        .search-input::placeholder {
+            color: #8B96A5;
+        }
+
+        .search-button {
+            padding: 12px 25px;
+            background: #3498db;
+            border: none;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-button:hover {
+            background: #2980b9;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .action-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #1C1C1C;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .action-item:hover {
+            color: #3498db;
+        }
+
+        .action-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .action-text {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .cart-wrapper {
+            position: relative;
+        }
+
+        /* === NAVIGATION BAR STYLES === */
+        .navbar-alibaba {
+            position: fixed;
+            width: 100%;
+            height: 56px;
+            top: 86px;
+            background: #2c3e50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 999;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-item {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-item.active {
+            background: #3498db;
+        }
+
+        .all-category {
+            background: #3498db;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .all-category:hover {
+            background: #2980b9;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dropdown:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-icon {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-dropdown:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        /* === BREADCRUMB STYLES === */
+        .breadcrumb {
+            position: fixed;
+            width: 100%;
+            height: 64px;
+            top: 142px;
+            background: #FFFFFF;
+            border-bottom: 1px solid #E0E0E0;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            z-index: 998;
+        }
+
+        .breadcrumb-list {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 8px;
+        }
+
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .breadcrumb-link {
+            text-decoration: none;
+            font-size: 14px;
+            color: #8B96A5;
+            transition: all 0.3s ease;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .breadcrumb-link:hover {
+            color: #3498db;
+            background: #F8F9FA;
+        }
+
+        .breadcrumb-link.active {
+            color: #1C1C1C;
+            font-weight: 500;
+        }
+
+        .breadcrumb-separator {
+            color: #8B96A5;
+            font-size: 12px;
+        }
+
+        /* === CONTENT MAIN STYLES === */
+        .content-main {
+            width: 100%;
+            max-width: 1200px;
+            margin: 220px auto 40px;
+            background: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            padding: 30px;
+            gap: 40px;
+        }
+
+        .product-image-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 400px;
+            background: #F7F7F7;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .in-stock-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #e8f5e9;
+            color: #388e3c;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .product-details-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .product-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1C1C1C;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+
+        .supplier-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .supplier-name {
+            font-size: 14px;
+            color: #8B96A5;
+        }
+
+        .rating-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .rating-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1C1C1C;
+        }
+
+        .rating-stars {
+            color: #FFD700;
+            font-size: 14px;
+        }
+
+        .reviews-count {
+            font-size: 14px;
+            color: #8B96A5;
+        }
+
+        .sold-count {
+            font-size: 14px;
+            color: #8B96A5;
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            color: #8B96A5;
+            margin-bottom: 20px;
+        }
+
+        .pricing-section {
+            margin-bottom: 20px;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .price-label {
+            font-size: 14px;
+            color: #8B96A5;
+            min-width: 80px;
+        }
+
+        .current-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #e74c3c;
+        }
+
+        .discount-price {
+            font-size: 20px;
+            font-weight: 600;
+            color: #8B96A5;
+            text-decoration: line-through;
+        }
+
+        .original-price {
+            font-size: 18px;
+            color: #8B96A5;
+            text-decoration: line-through;
+        }
+
+        .verified-seller {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: #e3f2fd;
+            color: #3498db;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            width: fit-content;
+        }
+
+        .quantity-section {
+            margin-bottom: 20px;
+        }
+
+        .quantity-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1C1C1C;
+            margin-bottom: 10px;
+        }
+
+        .quantity-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .quantity-option {
+            padding: 8px 16px;
+            border: 1px solid #E0E0E0;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #1C1C1C;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-option:hover {
+            border-color: #3498db;
+            background: #f8f9fa;
+        }
+
+        .quantity-option.active {
+            border-color: #3498db;
+            background: #3498db;
+            color: white;
+        }
+
+        .shipping-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            color: #388e3c;
+            margin-bottom: 20px;
+        }
+
+        .price-negotiable {
+            font-size: 14px;
+            color: #8B96A5;
+            margin-bottom: 20px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .send-inquiry {
+            flex: 2;
+            padding: 12px 24px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .send-inquiry:hover {
+            background: #2980b9;
+        }
+
+        .save-for-later {
+            flex: 1;
+            padding: 12px 16px;
+            background: #f8f9fa;
+            border: 1px solid #E0E0E0;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #1C1C1C;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .save-for-later:hover {
+            background: #e9ecef;
+            border-color: #3498db;
+        }
+
+        .product-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .spec-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .spec-label {
+            font-size: 12px;
+            color: #8B96A5;
+            font-weight: 500;
+        }
+
+        .spec-value {
+            font-size: 14px;
+            color: #1C1C1C;
+            font-weight: 500;
+        }
+
+        .seller-profile {
+            font-size: 14px;
+            color: #3498db;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .seller-profile:hover {
+            text-decoration: underline;
+        }
+
+        /* === PRODUCT DESCRIPTION STYLES === */
+        .block-detail {
+            width: 100%;
+            max-width: 1200px;
+            background: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin: 0 auto 40px;
+        }
+
+        .description-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1C1C1C;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .description-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #1C1C1C;
+            margin-bottom: 20px;
+        }
+
+        .description-text p {
+            margin-bottom: 15px;
+        }
+
+        .specifications-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .spec-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .spec-label {
+            font-size: 14px;
+            color: #8B96A5;
+            font-weight: 500;
+        }
+
+        .spec-value {
+            font-size: 16px;
+            color: #1C1C1C;
+            font-weight: 600;
+        }
+
+        .features-section {
+            border-top: 1px solid #E0E0E0;
+            padding-top: 30px;
+        }
+
+        .features-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .feature-icon {
+            color: #3498db;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .feature-content {
+            flex: 1;
+        }
+
+        .feature-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1C1C1C;
+            margin-bottom: 5px;
+        }
+
+        .feature-description {
+            font-size: 14px;
+            color: #8B96A5;
+            line-height: 1.5;
+        }
+
+        /* === YOU MAY LIKE SECTION === */
+        .aside-items {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            background: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .aside-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1C1C1C;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .product-recommendations {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .recommended-product {
+            display: flex;
+            flex-direction: column;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .recommended-product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 180px;
+            background: #F7F7F7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .product-info {
+            padding: 15px;
+            background: #FFFFFF;
+        }
+
+        .product-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1C1C1C;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .product-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: #e74c3c;
+        }
+
+        /* === RELATED PRODUCTS SECTION === */
+        .block-recommend {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            background: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .related-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .related-product {
+            display: flex;
+            flex-direction: column;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .related-product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .related-product-image {
+            width: 100%;
+            height: 150px;
+            background: #F7F7F7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .related-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .related-product-info {
+            padding: 12px;
+            background: #FFFFFF;
+        }
+
+        .related-product-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1C1C1C;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .related-product-price {
+            font-size: 14px;
+            font-weight: 700;
+            color: #e74c3c;
+        }
+
+        /* === BANNER SECTION === */
+        .banner {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            border-radius: 8px;
+            padding: 40px;
+            color: white;
+            text-align: center;
+        }
+
+        .banner-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .banner-subtitle {
+            font-size: 16px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .banner-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #FFFFFF;
+            color: #3498db;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .banner-button:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+
+        /* === FOOTER STYLES === */
+        .footer-alibaba {
+            width: 100%;
+            background: #FFFFFF;
+            padding: 50px 0 20px;
+            border-top: 1px solid #E0E0E0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            margin-bottom: 15px;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .footer-description {
+            font-size: 14px;
+            color: #8B96A5;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .footer-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1C1C1C;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-link {
+            font-size: 14px;
+            color: #8B96A5;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #3498db;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding: 20px;
+            border-top: 1px solid #E0E0E0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: #8B96A5;
+        }
+
+        .language-selector {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #8B96A5;
+            cursor: pointer;
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 1440px) {
+            .header-alibaba,
+            .navbar-alibaba,
+            .breadcrumb {
+                padding: 0 20px;
+            }
+            
+            .search-container {
+                width: 500px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .content-main {
+                flex-direction: column;
+                margin-top: 220px;
+            }
+            
+            .main-image {
+                height: 300px;
+            }
+            
+            .specifications-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .product-recommendations {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .related-products {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .search-container {
+                width: 400px;
+            }
+            
+            .header-actions {
+                gap: 20px;
+            }
+            
+            .nav-left {
+                gap: 20px;
+            }
+            
+            .nav-right {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-alibaba {
+                height: auto;
+                padding: 15px 20px;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .navbar-alibaba {
+                height: auto;
+                padding: 10px 20px;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .breadcrumb {
+                height: auto;
+                padding: 15px 20px;
+            }
+            
+            .search-container {
+                width: 100%;
+                order: 3;
+            }
+            
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .logo {
+                height: 35px;
+            }
+            
+            .header-actions {
+                gap: 15px;
+            }
+            
+            .nav-left,
+            .nav-right {
+                gap: 10px;
+            }
+            
+            .nav-item {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+            
+            .all-category {
+                padding: 8px 15px;
+                font-size: 13px;
+            }
+            
+            .category-dropdown {
+                min-width: 120px;
+                padding: 10px 15px;
+            }
+            
+            .content-main {
+                padding: 20px;
+                gap: 25px;
+            }
+            
+            .product-title {
+                font-size: 20px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .product-specs {
+                grid-template-columns: 1fr;
+            }
+            
+            .block-detail {
+                padding: 30px 25px;
+            }
+            
+            .section-title {
+                font-size: 18px;
+            }
+            
+            .description-text {
+                font-size: 13px;
+            }
+            
+            .breadcrumb-list {
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+            
+            .aside-items {
+                padding: 20px;
+            }
+            
+            .aside-title {
+                font-size: 20px;
+            }
+            
+            .product-recommendations {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+            
+            .block-recommend {
+                padding: 20px;
+            }
+            
+            .related-products {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+            
+            .banner {
+                padding: 30px 20px;
+            }
+            
+            .banner-title {
+                font-size: 24px;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-alibaba,
+            .navbar-alibaba,
+            .breadcrumb {
+                padding: 10px 15px;
+            }
+            
+            .logo-text {
+                font-size: 18px;
+            }
+            
+            .logo {
+                height: 30px;
+            }
+            
+            .header-actions {
+                gap: 10px;
+            }
+            
+            .action-text {
+                font-size: 10px;
+            }
+            
+            .nav-left,
+            .nav-right {
+                gap: 8px;
+            }
+            
+            .nav-item {
+                padding: 5px 10px;
+                font-size: 12px;
+            }
+            
+            .all-category {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+            
+            .category-dropdown {
+                min-width: 100px;
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+            
+            .search-input {
+                padding: 10px 12px;
+                font-size: 12px;
+            }
+            
+            .search-button {
+                padding: 10px 20px;
+                font-size: 12px;
+            }
+            
+            .nav-dropdown {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+            
+            .content-main {
+                padding: 15px;
+            }
+            
+            .product-title {
+                font-size: 18px;
+            }
+            
+            .current-price {
+                font-size: 20px;
+            }
+            
+            .quantity-options {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .block-detail {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 16px;
+                margin-bottom: 15px;
+            }
+            
+            .spec-value {
+                font-size: 14px;
+            }
+            
+            .feature-title {
+                font-size: 14px;
+            }
+            
+            .feature-description {
+                font-size: 13px;
+            }
+            
+            .breadcrumb-link {
+                font-size: 12px;
+                padding: 3px 6px;
+            }
+            
+            .breadcrumb-separator {
+                font-size: 10px;
+            }
+            
+            .aside-items {
+                padding: 15px;
+            }
+            
+            .aside-title {
+                font-size: 18px;
+            }
+            
+            .product-recommendations {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-image {
+                height: 200px;
+            }
+            
+            .block-recommend {
+                padding: 15px;
+            }
+            
+            .related-products {
+                grid-template-columns: 1fr;
+            }
+            
+            .related-product-image {
+                height: 180px;
+            }
+            
+            .banner {
+                padding: 25px 15px;
+            }
+            
+            .banner-title {
+                font-size: 20px;
+            }
+            
+            .banner-subtitle {
+                font-size: 14px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header-alibaba">
+        <!-- Logo with Image -->
+        <div class="logo-container">
+            <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\Brand\logo-colored.png" alt="Ecommerce Logo" class="logo">
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <select class="category-dropdown">
+                <option>All category</option>
+                <option>Electronics</option>
+                <option>Clothing</option>
+                <option>Home & Garden</option>
+                <option>Sports</option>
+                <option>Automotive</option>
+            </select>
+            <input type="text" class="search-input" placeholder="Search">
+            <button class="search-button">Search</button>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="header-actions">
+            <div class="action-item">
+                <div class="action-icon">👤</div>
+                <div class="action-text">Profile</div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-icon">💬</div>
+                <div class="action-text">Message</div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-icon">📦</div>
+                <div class="action-text">Orders</div>
+            </div>
+            
+            <div class="cart-wrapper">
+                <div class="action-item">
+                    <div class="action-icon">🛒</div>
+                    <div class="action-text">My cart</div>
+                    <div class="cart-count">3</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar-alibaba">
+        <!-- Left Navigation Items -->
+        <div class="nav-left">
+            <div class="nav-item all-category">
+                <span>All category</span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+            <div class="nav-item active">Hot offers</div>
+            <div class="nav-item">Gift boxes</div>
+            <div class="nav-item">Projects</div>
+            <div class="nav-item">Menu item</div>
+            <div class="nav-item">Help</div>
+        </div>
+
+        <!-- Right Navigation Items -->
+        <div class="nav-right">
+            <div class="nav-dropdown">
+                <span>English, USD</span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+            <div class="nav-dropdown">
+                <span>Ship to</span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb">
+        <ul class="breadcrumb-list">
+            <li class="breadcrumb-item">
+                <a href="#" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator">/</span>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#" class="breadcrumb-link">Clothings</a>
+                <span class="breadcrumb-separator">/</span>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#" class="breadcrumb-link">Men's wear</a>
+                <span class="breadcrumb-separator">/</span>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#" class="breadcrumb-link active">Summer clothing</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Product Detail Main Content -->
+    <div class="content-main">
+        <!-- Product Image Section -->
+        <div class="product-image-section">
+            <div class="in-stock-badge">In stock</div>
+            <div class="main-image">
+                <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\alibaba\Image\cloth\Bitmap.png" alt="Mens Long Sleeve T-shirt">
+            </div>
+        </div>
+
+        <!-- Product Details Section -->
+        <div class="product-details-section">
+            <!-- Product Title & Supplier -->
+            <div>
+                <h1 class="product-title">Mens Long Sleeve T-shirt Cotton Base Layer Slim Muscle</h1>
+                <div class="supplier-info">
+                    <span class="supplier-label">Supplier:</span>
+                    <span class="supplier-name">Guanjoi Trading LLC</span>
+                </div>
+            </div>
+
+            <!-- Rating & Sales Info -->
+            <div class="rating-section">
+                <div class="rating">
+                    <span class="rating-value">9.3</span>
+                    <span class="rating-stars">★★★★★</span>
+                </div>
+                <span class="reviews-count">32 reviews</span>
+                <span class="sold-count">154 sold</span>
+            </div>
+
+            <!-- Location -->
+            <div class="location">
+                <span>📍</span>
+                <span>Germany, Berlin</span>
+            </div>
+
+            <!-- Pricing -->
+            <div class="pricing-section">
+                <div class="price-row">
+                    <span class="price-label">Price:</span>
+                    <span class="current-price">$98.00</span>
+                    <span class="discount-price">$90.00</span>
+                    <span class="original-price">$78.00</span>
+                </div>
+            </div>
+
+            <!-- Verified Seller Badge -->
+            <div class="verified-seller">
+                <span>✓</span>
+                <span>Verified Seller</span>
+            </div>
+
+            <!-- Quantity Options -->
+            <div class="quantity-section">
+                <div class="quantity-title">Quantity:</div>
+                <div class="quantity-options">
+                    <div class="quantity-option active">50-100 pcs</div>
+                    <div class="quantity-option">100-700 pcs</div>
+                    <div class="quantity-option">700+ pcs</div>
+                </div>
+            </div>
+
+            <!-- Shipping -->
+            <div class="shipping-badge">
+                <span>🚚</span>
+                <span>Worldwide shipping</span>
+            </div>
+
+            <!-- Price Negotiable -->
+            <div class="price-negotiable">
+                Price: <strong>Negotiable</strong>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="send-inquiry">Send inquiry</button>
+                <button class="save-for-later">Save for later</button>
+            </div>
+
+            <!-- Product Specifications -->
+            <div class="product-specs">
+                <div class="spec-item">
+                    <span class="spec-label">Type:</span>
+                    <span class="spec-value">Classic shoes</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Material:</span>
+                    <span class="spec-value">Plastic material</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Design:</span>
+                    <span class="spec-value">Modern nice</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Customization:</span>
+                    <span class="spec-value">Customized logo and design custom packages</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Protection:</span>
+                    <span class="spec-value">Refund Policy</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Warranty:</span>
+                    <span class="spec-value">2 years full warranty</span>
+                </div>
+            </div>
+
+            <!-- Seller Profile Link -->
+            <a href="#" class="seller-profile">Seller's profile</a>
+        </div>
+    </div>
+
+    <!-- Product Description & Specifications Block -->
+    <div class="block-detail">
+        <!-- Description Section -->
+        <div class="description-section">
+            <h2 class="section-title">Product Description</h2>
+            <div class="description-text">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                </p>
+            </div>
+        </div>
+
+        <!-- Specifications Section -->
+        <div class="specifications-section">
+            <h2 class="section-title">Specifications</h2>
+            <div class="specifications-grid">
+                <div class="spec-item">
+                    <span class="spec-label">Model</span>
+                    <span class="spec-value">#8786867</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Style</span>
+                    <span class="spec-value">Classic style</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Certificate</span>
+                    <span class="spec-value">ISO-898921212</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Size</span>
+                    <span class="spec-value">34mm x 450mm x 19mm</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Memory</span>
+                    <span class="spec-value">36GB RAM</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features-section">
+            <h2 class="section-title">Key Features</h2>
+            <ul class="features-list">
+                <li class="feature-item">
+                    <span class="feature-icon">✓</span>
+                    <div class="feature-content">
+                        <div class="feature-title">Some great feature name here</div>
+                        <div class="feature-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <span class="feature-icon">✓</span>
+                    <div class="feature-content">
+                        <div class="feature-title">Duis aute irure dolor in reprehenderit</div>
+                        <div class="feature-description">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <span class="feature-icon">✓</span>
+                    <div class="feature-content">
+                        <div class="feature-title">Some great feature name here</div>
+                        <div class="feature-description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- You May Like Section -->
+    <div class="aside-items">
+        <h2 class="aside-title">You May Like</h2>
+        <div class="product-recommendations">
+            <!-- Product 1 -->
+            <div class="recommended-product">
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\alibaba\Image\cloth\2 1.png" alt="Men Blazers Sets">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Men Blazers Sets Elegant Formal</div>
+                    <div class="product-price">$7.00 - $99.50</div>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="recommended-product">
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\alibaba\Image\cloth\Bitmap (2).png" alt="Men Shirt Sleeve Polo">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Men Shirt Sleeve Polo Contrast</div>
+                    <div class="product-price">$7.00 - $99.50</div>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="recommended-product">
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\alibaba\Image\cloth\image 24.png" alt="Apple Watch">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Apple Watch Series Space Gray</div>
+                    <div class="product-price">$7.00 - $99.50</div>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="recommended-product">
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\alibaba\Image\cloth\image 26.png" alt="Basketball Socks">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Basketball Crew Socks Long Stuff</div>
+                    <div class="product-price">$7.00 - $99.50</div>
+                </div>
+            </div>
+            
+            <!-- Product 5 -->
+            <div class="recommended-product">
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\alibaba\Image\cloth\image 30.png" alt="Summer T-Shirts">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">New Summer Men's Castrol T-Shirts</div>
+                    <div class="product-price">$7.00 - $99.50</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Products Section -->
+    <div class="block-recommend">
+        <h2 class="section-title">Related Products</h2>
+        <div class="related-products">
+            <!-- Product 1 -->
+            <div class="related-product">
+                <div class="related-product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\alibaba\Image\cloth\image 24.png" alt="Xiaomi Redmi 8">
+                </div>
+                <div class="related-product-info">
+                    <div class="related-product-name">Xiaomi Redmi 8 Original</div>
+                    <div class="related-product-price">$32.00 - $40.00</div>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="related-product">
+                <div class="related-product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\8.png" alt="Xiaomi Redmi 8">
+                </div>
+                <div class="related-product-info">
+                    <div class="related-product-name">Xiaomi Redmi 8 Original</div>
+                    <div class="related-product-price">$32.00 - $40.00</div>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="related-product">
+                <div class="related-product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 86.png" alt="Xiaomi Redmi 8">
+                </div>
+                <div class="related-product-info">
+                    <div class="related-product-name">Xiaomi Redmi 8 Original</div>
+                    <div class="related-product-price">$32.00 - $40.00</div>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="related-product">
+                <div class="related-product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 85.png" alt="Xiaomi Redmi 8">
+                </div>
+                <div class="related-product-info">
+                    <div class="related-product-name">Xiaomi Redmi 8 Original</div>
+                    <div class="related-product-price">$32.00 - $40.00</div>
+                </div>
+            </div>
+            
+            <!-- Product 5 -->
+            <div class="related-product">
+                <div class="related-product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\interior\7.png" alt="Xiaomi Redmi 8">
+                </div>
+                <div class="related-product-info">
+                    <div class="related-product-name">Xiaomi Redmi 8 Original</div>
+                    <div class="related-product-price">$32.00 - $40.00</div>
+                </div>
+            </div>
+            
+            <!-- Product 6 -->
+            <div class="related-product">
+                <div class="related-product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\alibaba\Image\cloth\Bitmap (2).png" alt="Xiaomi Redmi 8">
+                </div>
+                <div class="related-product-info">
+                    <div class="related-product-name">Xiaomi Redmi 8 Original</div>
+                    <div class="related-product-price">$32.00 - $40.00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Banner Section -->
+    <div class="banner">
+        <h2 class="banner-title">Super discount on more than 100 USD</h2>
+        <p class="banner-subtitle">Have you ever finally just write dummy info</p>
+        <a href="#" class="banner-button">Shop now</a>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer-alibaba">
+        <div class="footer-content">
+            <!-- About Column -->
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\Brand\logo-colored.png" alt="Ecommerce Logo">
+                </div>
+                <p class="footer-description">
+                    Best information about the company gies here but now lorem ipsum is
+                </p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Find store</a>
+                    <a href="#" class="footer-link">Categories</a>
+                    <a href="#" class="footer-link">Blogs</a>
+                </div>
+            </div>
+            
+            <!-- Partnership Column -->
+            <div class="footer-column">
+                <h3 class="footer-title">Partnership</h3>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Find store</a>
+                    <a href="#" class="footer-link">Categories</a>
+                    <a href="#" class="footer-link">Blogs</a>
+                </div>
+            </div>
+            
+            <!-- Information Column -->
+            <div class="footer-column">
+                <h3 class="footer-title">Information</h3>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Help Center</a>
+                    <a href="#" class="footer-link">Money Refund</a>
+                    <a href="#" class="footer-link">Shipping</a>
+                    <a href="#" class="footer-link">Contact us</a>
+                </div>
+            </div>
+            
+            <!-- For Users Column -->
+            <div class="footer-column">
+                <h3 class="footer-title">For users</h3>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Login</a>
+                    <a href="#" class="footer-link">Register</a>
+                    <a href="#" class="footer-link">Settings</a>
+                    <a href="#" class="footer-link">My Orders</a>
+                </div>
+            </div>
+            
+            <!-- Get App Column -->
+            <div class="footer-column">
+                <h3 class="footer-title">Get app</h3>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">App Store</a>
+                    <a href="#" class="footer-link">Google Play</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">© 2023 Ecommerce.</div>
+            <div class="language-selector">
+                <span>English</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

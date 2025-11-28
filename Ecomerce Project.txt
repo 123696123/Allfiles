@@ -1,0 +1,1958 @@
+                                                   Ecomerce Project
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Homepage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 142px;
+        }
+
+        /* === HEADER STYLES === */
+        .header-alibaba {
+            position: fixed;
+            width: 100%;
+            height: 86px;
+            left: 0px;
+            top: 0px;
+            background: #FFFFFF;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #FFFFFF;
+            border: 2px solid #E0E0E0;
+            border-radius: 6px;
+            overflow: hidden;
+            width: 600px;
+        }
+
+        .category-dropdown {
+            padding: 12px 20px;
+            background: #F8F9FA;
+            border: none;
+            border-right: 2px solid #E0E0E0;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1C1C1C;
+            cursor: pointer;
+            min-width: 140px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            color: #1C1C1C;
+        }
+
+        .search-input::placeholder {
+            color: #8B96A5;
+        }
+
+        .search-button {
+            padding: 12px 25px;
+            background: #3498db;
+            border: none;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-button:hover {
+            background: #2980b9;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .action-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #1C1C1C;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .action-item:hover {
+            color: #3498db;
+        }
+
+        .action-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .action-text {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .cart-wrapper {
+            position: relative;
+        }
+
+        /* === NAVIGATION BAR STYLES === */
+        .navbar-alibaba {
+            position: fixed;
+            width: 100%;
+            height: 56px;
+            left: 0px;
+            top: 86px;
+            background: #2c3e50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 999;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-item {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-item.active {
+            background: #3498db;
+        }
+
+        .all-category {
+            background: #3498db;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .all-category:hover {
+            background: #2980b9;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dropdown:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-icon {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-dropdown:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 30px;
+            padding: 20px;
+        }
+        
+        .left-panel {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+        }
+        
+        .category-list {
+            list-style-type: none;
+        }
+        
+        .category-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 16px;
+            font-weight: 500;
+            color: #444;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .category-item:hover {
+            color: #3498db;
+            transform: translateX(5px);
+        }
+        
+        .category-item:last-child {
+            border-bottom: none;
+        }
+        
+        .middle-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            background: white url('C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\backgrounds\Banner-board-800x420 2.png') center/cover no-repeat;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            min-height: 400px;
+            position: relative;
+        }
+        
+        .middle-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 12px;
+        }
+        
+        .middle-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .middle-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .middle-subtitle {
+            font-size: 18px;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+        }
+        
+        .middle-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .middle-button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+        }
+        
+        .right-panel {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .promo-box {
+            border-radius: 12px;
+            padding: 25px;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .promo-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .promo-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .promo-subtitle {
+            font-size: 16px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .promo-button {
+            background-color: rgba(255, 255, 255, 0.25);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            align-self: flex-start;
+            transition: all 0.3s ease;
+        }
+        
+        .promo-button:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .box-1 {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+        }
+        
+        .box-2 {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+        }
+        
+        .box-3 {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+        
+        .box-4 {
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+        }
+        
+        @media (max-width: 992px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .middle-panel {
+                order: -1;
+            }
+        }
+
+        /* Additional styles for all sections */
+        .deals-container, .products-container, .electronics-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .view-all {
+            color: #3498db;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .view-all:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+        
+        /* Deals and Offers Styles */
+        .deals-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+        }
+        
+        .deal-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .deal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+        
+        .discount-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        
+        .product-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .product-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .countdown-timer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        
+        .time-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .time-value {
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            padding: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #2c3e50;
+            width: 40px;
+            margin-bottom: 5px;
+        }
+        
+        .time-label {
+            font-size: 12px;
+            color: #7f8c8d;
+        }
+        
+        .hygiene-card {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 25px;
+            grid-column: span 1;
+        }
+        
+        .hygiene-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .hygiene-countdown {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .hygiene-time-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .hygiene-time-value {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .hygiene-time-label {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        /* Products Grid Styles */
+        .products-grid, .electronics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+        
+        .product-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .product-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .product-category {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        
+        .product-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+        
+        .source-button, .add-to-cart {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .source-button:hover, .add-to-cart:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        /* Inquiry Section Styles */
+        .section-inquiry {
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            display: flex;
+            gap: 50px;
+        }
+        
+        .inquiry-content {
+            flex: 1;
+        }
+        
+        .inquiry-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        .inquiry-subtitle {
+            font-size: 17px;
+            font-weight: 600;
+            color: #3498db;
+            margin-bottom: 25px;
+        }
+        
+        .inquiry-description {
+            font-size: 16px;
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .inquiry-form {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .form-input, .form-textarea {
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .quantity-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .quantity-input {
+            flex: 2;
+        }
+        
+        .unit-select {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            background-color: white;
+        }
+        
+        .send-button {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .send-button:hover {
+            background: linear-gradient(135deg, #2980b9, #2573a7);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+        
+        /* Recommended Items Styles */
+        .section-recommend {
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+        }
+        
+        /* Extra Services Styles */
+        .section-service {
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 140px;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border-color: #3498db;
+        }
+        
+        .service-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .service-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+        
+        /* Suppliers by Region Styles */
+        .section-country {
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px 40px;
+        }
+        
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+        
+        .country-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .country-item:hover {
+            background-color: #f8f9fa;
+            border-color: #e9ecef;
+            transform: translateY(-2px);
+        }
+        
+        .country-flag {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        
+        .country-flag img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .country-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .country-domain {
+            font-size: 12px;
+            color: #3498db;
+            font-weight: 500;
+        }
+        
+        /* Newsletter Styles */
+        .newsletter-alibaba {
+            width: 100%;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px 0;
+            padding: 40px 20px;
+        }
+        
+        .newsletter-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+        
+        .newsletter-text {
+            flex: 1;
+            max-width: 500px;
+        }
+        
+        .newsletter-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .newsletter-description {
+            font-size: 16px;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .email-input {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            width: 300px;
+            background-color: white;
+            color: #333;
+        }
+        
+        .email-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+        }
+        
+        .email-input::placeholder {
+            color: #999;
+        }
+        
+        .subscribe-button {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .subscribe-button:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+        }
+        
+        /* Footer Styles */
+        .footer-alibaba {
+            width: 100%;
+            background: #FFFFFF;
+            padding: 50px 0 20px;
+            border-top: 1px solid #E0E0E0;
+            margin-top: 40px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+            padding: 0 20px;
+        }
+        
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-logo {
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo img {
+            height: 40px;
+            width: auto;
+        }
+        
+        .footer-description {
+            font-size: 14px;
+            color: #8B96A5;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .footer-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1C1C1C;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .footer-link {
+            font-size: 14px;
+            color: #8B96A5;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: #3498db;
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding: 20px;
+            border-top: 1px solid #E0E0E0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .copyright {
+            font-size: 14px;
+            color: #8B96A5;
+        }
+        
+        .language-selector {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #8B96A5;
+            cursor: pointer;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .deals-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .products-grid, .electronics-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .countries-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .deals-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .products-grid, .electronics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .section-inquiry {
+                flex-direction: column;
+                padding: 30px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .countries-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .newsletter-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 25px;
+            }
+            
+            .email-input {
+                width: 250px;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .deals-grid, .products-grid, .electronics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .countries-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .email-input {
+                width: 100%;
+            }
+            
+            .subscribe-button {
+                width: 100%;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header-alibaba">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\Brand\logo-colored.png" alt="Ecommerce Logo">
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <select class="category-dropdown">
+                <option>All category</option>
+                <option>Electronics</option>
+                <option>Clothing</option>
+                <option>Home & Garden</option>
+                <option>Sports</option>
+                <option>Automotive</option>
+            </select>
+            <input type="text" class="search-input" placeholder="Search">
+            <button class="search-button">Search</button>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="header-actions">
+            <div class="action-item">
+                <div class="action-icon">👤</div>
+                <div class="action-text">Profile</div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-icon">💬</div>
+                <div class="action-text">Message</div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-icon">📦</div>
+                <div class="action-text">Orders</div>
+            </div>
+            
+            <div class="cart-wrapper">
+                <div class="action-item">
+                    <div class="action-icon">🛒</div>
+                    <div class="action-text">My cart</div>
+                    <div class="cart-count">3</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar-alibaba">
+        <!-- Left Navigation Items -->
+        <div class="nav-left">
+            <div class="nav-item all-category">
+                <span>All category</span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+            <div class="nav-item active">Hot offers</div>
+            <div class="nav-item">Gift boxes</div>
+            <div class="nav-item">Projects</div>
+            <div class="nav-item">Menu item</div>
+            <div class="nav-item">Help</div>
+        </div>
+
+        <!-- Right Navigation Items -->
+        <div class="nav-right">
+            <div class="nav-dropdown">
+                <span>English, USD</span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+            <div class="nav-dropdown">
+                <span>Ship to</span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="left-panel">
+            <ul class="category-list">
+                <li class="category-item">Automobiles</li>
+                <li class="category-item">Clothes and wear</li>
+                <li class="category-item">Home interiors</li>
+                <li class="category-item">Computer and tech</li>
+                <li class="category-item">Tools, equipments</li>
+                <li class="category-item">Sports and outdoor</li>
+                <li class="category-item">Animal and pets</li>
+                <li class="category-item">Machinery tools</li>
+                <li class="category-item">More category</li>
+            </ul>
+        </div>
+        
+        <div class="middle-panel">
+            <div class="middle-content">
+                <h2 class="middle-title">Electronic items</h2>
+                <p class="middle-subtitle">Learn more</p>
+                <button class="middle-button">Join now</button>
+            </div>
+        </div>
+        
+        <div class="right-panel">
+            <div class="promo-box box-1">
+                <h3 class="promo-title">Hi, user</h3>
+                <p class="promo-subtitle">let's get started</p>
+                <button class="promo-button">Log in</button>
+            </div>
+            
+            <div class="promo-box box-2">
+                <h3 class="promo-title">Latest trending</h3>
+                <p class="promo-subtitle">Discover what's new</p>
+                <button class="promo-button">Explore</button>
+            </div>
+            
+            <div class="promo-box box-3">
+                <h3 class="promo-title">Get US $10 off</h3>
+                <p class="promo-subtitle">with a new supplier</p>
+                <button class="promo-button">Claim offer</button>
+            </div>
+            
+            <div class="promo-box box-4">
+                <h3 class="promo-title">Send quotes</h3>
+                <p class="promo-subtitle">with supplier preferences</p>
+                <button class="promo-button">Get started</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deals and Offers Section -->
+    <div class="deals-container">
+        <div class="section-header">
+            <h2 class="section-title">Deals and offers</h2>
+            <a href="#" class="view-all">View all</a>
+        </div>
+        
+        <div class="deals-grid">
+            <div class="deal-card hygiene-card">
+                <h3 class="hygiene-title">Hygiene equipments</h3>
+                <div class="hygiene-countdown">
+                    <div class="hygiene-time-unit">
+                        <div class="hygiene-time-value">04</div>
+                        <div class="hygiene-time-label">Days</div>
+                    </div>
+                    <div class="hygiene-time-unit">
+                        <div class="hygiene-time-value">13</div>
+                        <div class="hygiene-time-label">Hour</div>
+                    </div>
+                    <div class="hygiene-time-unit">
+                        <div class="hygiene-time-value">34</div>
+                        <div class="hygiene-time-label">Min</div>
+                    </div>
+                    <div class="hygiene-time-unit">
+                        <div class="hygiene-time-value">56</div>
+                        <div class="hygiene-time-label">Sec</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="deal-card">
+                <div class="discount-badge">-25%</div>
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\8.png" alt="Smart watches">
+                </div>
+                <h3 class="product-name">Smart watches</h3>
+                <div class="countdown-timer">
+                    <div class="time-unit">
+                        <div class="time-value">04</div>
+                        <div class="time-label">Days</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value">13</div>
+                        <div class="time-label">Hour</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value">34</div>
+                        <div class="time-label">Min</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="deal-card">
+                <div class="discount-badge">-15%</div>
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 23.png" alt="Laptops">
+                </div>
+                <h3 class="product-name">Laptops</h3>
+                <div class="countdown-timer">
+                    <div class="time-unit">
+                        <div class="time-value">04</div>
+                        <div class="time-label">Days</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value">13</div>
+                        <div class="time-label">Hour</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value">34</div>
+                        <div class="time-label">Min</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="deal-card">
+                <div class="discount-badge">-40%</div>
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 29.png" alt="GoPro cameras">
+                </div>
+                <h3 class="product-name">GoPro cameras</h3>
+                <div class="countdown-timer">
+                    <div class="time-unit">
+                        <div class="time-value">04</div>
+                        <div class="time-label">Days</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value">13</div>
+                        <div class="time-label">Hour</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value">34</div>
+                        <div class="time-label">Min</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="deal-card">
+                <div class="discount-badge">-25%</div>
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 34.png" alt="Headphones">
+                </div>
+                <h3 class="product-name">Headphones</h3>
+                <div class="countdown-timer">
+                    <div class="time-unit">
+                        <div class="time-value">04</div>
+                        <div class="time-label">Days</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value">13</div>
+                        <div class="time-label">Hour</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value">34</div>
+                        <div class="time-label">Min</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="deal-card">
+                <div class="discount-badge">-25%</div>
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\6.png" alt="Canon cameras">
+                </div>
+                <h3 class="product-name">Canon cameras</h3>
+                <div class="countdown-timer">
+                    <div class="time-unit">
+                        <div class="time-value">04</div>
+                        <div class="time-label">Days</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value">13</div>
+                        <div class="time-label">Hour</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value">34</div>
+                        <div class="time-label">Min</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Home and Outdoor Section -->
+    <div class="products-container">
+        <div class="section-header">
+            <h2 class="section-title">Home and outdoor</h2>
+        </div>
+        
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\interior\1.png" alt="Soft chairs">
+                </div>
+                <h3 class="product-name">Soft chairs</h3>
+                <p class="product-category">Sofa & chair</p>
+                <div class="product-price">From USD 19</div>
+                <button class="source-button">Source now</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\interior\3.png" alt="Kitchen dishes">
+                </div>
+                <h3 class="product-name">Kitchen dishes</h3>
+                <p class="product-category">Kitchen mixer</p>
+                <div class="product-price">From USD 19</div>
+                <button class="source-button">Source now</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\interior\6.png" alt="Smart watches">
+                </div>
+                <h3 class="product-name">Smart watches</h3>
+                <p class="product-category">Home appliance</p>
+                <div class="product-price">From USD 19</div>
+                <button class="source-button">Source now</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\interior\7.png" alt="Blenders">
+                </div>
+                <h3 class="product-name">Blenders</h3>
+                <p class="product-category">Kitchen mixer</p>
+                <div class="product-price">From USD 39</div>
+                <button class="source-button">Source now</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\interior\8.png" alt="Home appliance">
+                </div>
+                <h3 class="product-name">Home appliance</h3>
+                <p class="product-category">Home appliance</p>
+                <div class="product-price">From USD 19</div>
+                <button class="source-button">Source now</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\interior\9.png" alt="Coffee maker">
+                </div>
+                <h3 class="product-name">Coffee maker</h3>
+                <p class="product-category">Kitchen mixer</p>
+                <div class="product-price">From USD 10</div>
+                <button class="source-button">Source now</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\interior\image 89.png" alt="Smart lights">
+                </div>
+                <h3 class="product-name">Smart lights</h3>
+                <p class="product-category">Home appliance</p>
+                <div class="product-price">From USD 29</div>
+                <button class="source-button">Source now</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\interior\image 93.png" alt="Garden tools">
+                </div>
+                <h3 class="product-name">Garden tools</h3>
+                <p class="product-category">Outdoor</p>
+                <div class="product-price">From USD 15</div>
+                <button class="source-button">Source now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Consumer Electronics Section -->
+    <div class="electronics-container">
+        <div class="section-header">
+            <h2 class="section-title">Consumer electronics and gadgets</h2>
+        </div>
+        
+        <div class="electronics-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 86.png" alt="Smart watches">
+                </div>
+                <h3 class="product-name">Smart watches</h3>
+                <div class="product-price">From USD 19</div>
+                <button class="source-button">Source now</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\6.png" alt="Cameras">
+                </div>
+                <h3 class="product-name">Cameras</h3>
+                <div class="product-price">From USD 89</div>
+                <button class="source-button">Source now</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\8.png" alt="Headphones">
+                </div>
+                <h3 class="product-name">Headphones</h3>
+                <div class="product-price">From USD 10</div>
+                <button class="source-button">Source now</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 23.png" alt="Smart watches">
+                </div>
+                <h3 class="product-name">Smart watches</h3>
+                <div class="product-price">From USD 90</div>
+                <button class="source-button">Source now</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 29.png" alt="Gaming set">
+                </div>
+                <h3 class="product-name">Gaming set</h3>
+                <div class="product-price">From USD 35</div>
+                <button class="source-button">Source now</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 32.png" alt="Laptops & PC">
+                </div>
+                <h3 class="product-name">Laptops & PC</h3>
+                <div class="product-price">From USD 340</div>
+                <button class="source-button">Source now</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 33.png" alt="Smartphones">
+                </div>
+                <h3 class="product-name">Smartphones</h3>
+                <div class="product-price">From USD 19</div>
+                <button class="source-button">Source now</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 34.png" alt="Electric kettle">
+                </div>
+                <h3 class="product-name">Electric kettle</h3>
+                <div class="product-price">From USD 240</div>
+                <button class="source-button">Source now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Supplier Inquiry Section -->
+    <div class="section-inquiry">
+        <div class="inquiry-content">
+            <h2 class="inquiry-title">An easy way to send requests to all suppliers</h2>
+            <h3 class="inquiry-subtitle">Send quote to suppliers</h3>
+            <p class="inquiry-description">What item you need? Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+        </div>
+        
+        <form class="inquiry-form">
+            <div class="form-group">
+                <label class="form-label" for="item">What item you need?</label>
+                <input type="text" id="item" class="form-input" placeholder="Enter item name">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="details">Type more details</label>
+                <textarea id="details" class="form-textarea" placeholder="Enter additional details about your request"></textarea>
+            </div>
+            
+            <div class="quantity-row">
+                <div class="form-group quantity-input">
+                    <label class="form-label" for="quantity">Quantity</label>
+                    <input type="number" id="quantity" class="form-input" placeholder="Enter quantity">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="unit">Unit</label>
+                    <select id="unit" class="unit-select">
+                        <option value="pcs">Pcs</option>
+                        <option value="kg">Kg</option>
+                        <option value="liters">Liters</option>
+                        <option value="meters">Meters</option>
+                        <option value="boxes">Boxes</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="send-button">Send inquiry</button>
+        </form>
+    </div>
+
+    <!-- Recommended Items Section -->
+    <div class="section-recommend">
+        <div class="section-header">
+            <h2 class="section-title">Recommended items</h2>
+            <a href="#" class="view-all">View all</a>
+        </div>
+        
+        <div class="products-grid">
+            <!-- First Row -->
+            <div class="product-card">
+                <div class="product-price">$10.30</div>
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\interior\3.png" alt="T-shirts">
+                </div>
+                <div class="product-name">T-shirts with multiple colors, for men</div>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-price">$10.30</div>
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 86.png" alt="Jeans shorts">
+                </div>
+                <div class="product-name">Jeans shorts for men<br>blue color</div>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-price">$12.50</div>
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 85.png" alt="Winter coat">
+                </div>
+                <div class="product-name">Brown winter coat<br>medium size</div>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-price">$34.00</div>
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\alibaba\Image\cloth\image 30.png" alt="Jeans bag">
+                </div>
+                <div class="product-name">Jeans bag for travel<br>for men</div>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-price">$99.00</div>
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\alibaba\Image\cloth\2 1.png" alt="Leather wallet">
+                </div>
+                <div class="product-name">Leather wallet</div>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            
+            <!-- Second Row -->
+            <div class="product-card">
+                <div class="product-price">$9.99</div>
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\alibaba\Image\cloth\Bitmap (2).png" alt="Canon camera">
+                </div>
+                <div class="product-name">Canon camera<br>black, 100x zoom</div>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-price">$8.99</div>
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\alibaba\Image\cloth\Bitmap.png" alt="Headset">
+                </div>
+                <div class="product-name">Headset for gaming<br>with mic</div>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-price">$10.30</div>
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\alibaba\Image\cloth\image 24.png" alt="Smartwatch">
+                </div>
+                <div class="product-name">Smartwatch<br>silver color modern</div>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-price">$10.30</div>
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\alibaba\Image\cloth\image 26.png" alt="Blue wallet">
+                </div>
+                <div class="product-name">Blue wallet for men<br>leather material</div>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-price">$80.95</div>
+                <div class="product-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 34.png" alt="Jeans bag">
+                </div>
+                <div class="product-name">Jeans bag for travel<br>for men</div>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Extra Services Section -->
+    <div class="section-service">
+        <div class="section-header">
+            <h2 class="section-title">Our extra services</h2>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\backgrounds\Mask group.png" alt="Source from Industry Hubs">
+                </div>
+                <div class="service-name">Source from<br>Industry Hubs</div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\backgrounds\image 106.png" alt="Customize Your Products">
+                </div>
+                <div class="service-name">Customize Your<br>Products</div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\backgrounds\image 107.png" alt="Fast, reliable shipping">
+                </div>
+                <div class="service-name">Fast, reliable shipping<br>by ocean or air</div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\backgrounds\Mask group (1).png" alt="Product monitoring">
+                </div>
+                <div class="service-name">Product monitoring<br>and inspection</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Suppliers by Region Section -->
+    <div class="section-country">
+        <div class="section-header">
+            <h2 class="section-title">Suppliers by region</h2>
+        </div>
+        
+        <div class="countries-grid">
+            <!-- First Row -->
+            <div class="country-item">
+                <div class="country-flag">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout1\Image\flags\AE@2x.png" alt="Arabic Emirates">
+                </div>
+                <div class="country-name">Arabic Emirates</div>
+                <div class="country-domain">shopname.ae</div>
+            </div>
+            
+            <div class="country-item">
+                <div class="country-flag">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout1\Image\flags\AU@2x.png" alt="Australia">
+                </div>
+                <div class="country-name">Australia</div>
+                <div class="country-domain">shopname.ae</div>
+            </div>
+            
+            <div class="country-item">
+                <div class="country-flag">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout1\Image\flags\US@2x.png" alt="United States">
+                </div>
+                <div class="country-name">United States</div>
+                <div class="country-domain">shopname.ae</div>
+            </div>
+            
+            <div class="country-item">
+                <div class="country-flag">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout1\Image\flags\RU@2x.png" alt="Russia">
+                </div>
+                <div class="country-name">Russia</div>
+                <div class="country-domain">shopname.ru</div>
+            </div>
+            
+            <div class="country-item">
+                <div class="country-flag">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout1\Image\flags\IT@2x.png" alt="Italy">
+                </div>
+                <div class="country-name">Italy</div>
+                <div class="country-domain">shopname.it</div>
+            </div>
+            
+            <!-- Second Row -->
+            <div class="country-item">
+                <div class="country-flag">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout1\Image\flags\DK@2x.png" alt="Denmark">
+                </div>
+                <div class="country-name">Denmark</div>
+                <div class="country-domain">denmark.com.dk</div>
+            </div>
+            
+            <div class="country-item">
+                <div class="country-flag">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout1\Image\flags\FR@2x.png" alt="France">
+                </div>
+                <div class="country-name">France</div>
+                <div class="country-domain">shopname.com.fr</div>
+            </div>
+            
+            <div class="country-item">
+                <div class="country-flag">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout1\Image\flags\AE@2x.png" alt="Arabic Emirates">
+                </div>
+                <div class="country-name">Arabic Emirates</div>
+                <div class="country-domain">shopname.ae</div>
+            </div>
+            
+            <div class="country-item">
+                <div class="country-flag">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout1\Image\flags\CN@2x.png" alt="China">
+                </div>
+                <div class="country-name">China</div>
+                <div class="country-domain">shopname.ae</div>
+            </div>
+            
+            <div class="country-item">
+                <div class="country-flag">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout1\Image\flags\GB@2x.png" alt="Great Britain">
+                </div>
+                <div class="country-name">Great Britain</div>
+                <div class="country-domain">shopname.co.uk</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter Section -->
+    <div class="newsletter-alibaba">
+        <div class="newsletter-content">
+            <div class="newsletter-text">
+                <h2 class="newsletter-title">Subscribe on our newsletter</h2>
+                <p class="newsletter-description">Get daily news on upcoming offers from many suppliers all over the world</p>
+            </div>
+            
+            <form class="newsletter-form">
+                <input type="email" class="email-input" placeholder="Email" required>
+                <button type="submit" class="subscribe-button">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer-alibaba">
+        <div class="footer-content">
+            <!-- About Column -->
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\Brand\logo-colored.png" alt="Ecommerce Logo">
+                </div>
+                <p class="footer-description">
+                    Best information about the company gies here but now lorem ipsum is
+                </p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Find store</a>
+                    <a href="#" class="footer-link">Categories</a>
+                    <a href="#" class="footer-link">Blogs</a>
+                </div>
+            </div>
+            
+            <!-- Partnership Column -->
+            <div class="footer-column">
+                <h3 class="footer-title">Partnership</h3>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Find store</a>
+                    <a href="#" class="footer-link">Categories</a>
+                    <a href="#" class="footer-link">Blogs</a>
+                </div>
+            </div>
+            
+            <!-- Information Column -->
+            <div class="footer-column">
+                <h3 class="footer-title">Information</h3>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Help Center</a>
+                    <a href="#" class="footer-link">Money Refund</a>
+                    <a href="#" class="footer-link">Shipping</a>
+                    <a href="#" class="footer-link">Contact us</a>
+                </div>
+            </div>
+            
+            <!-- For Users Column -->
+            <div class="footer-column">
+                <h3 class="footer-title">For users</h3>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Login</a>
+                    <a href="#" class="footer-link">Register</a>
+                    <a href="#" class="footer-link">Settings</a>
+                    <a href="#" class="footer-link">My Orders</a>
+                </div>
+            </div>
+            
+            <!-- Get App Column -->
+            <div class="footer-column">
+                <h3 class="footer-title">Get app</h3>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">App Store</a>
+                    <a href="#" class="footer-link">Google Play</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">© 2023 Ecommerce.</div>
+            <div class="language-selector">
+                <span>English</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

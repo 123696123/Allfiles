@@ -1,0 +1,2689 @@
+3rd page
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Header</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            padding: 100px 20px 20px;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* === HEADER STYLES === */
+        .header-alibaba {
+            position: absolute;
+            width: 1440px;
+            height: 86px;
+            left: 0px;
+            top: 0px;
+            background: #FFFFFF;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .logo-text span {
+            color: #3498db;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #FFFFFF;
+            border: 2px solid #E0E0E0;
+            border-radius: 6px;
+            overflow: hidden;
+            width: 600px;
+        }
+
+        .category-dropdown {
+            padding: 12px 20px;
+            background: #F8F9FA;
+            border: none;
+            border-right: 2px solid #E0E0E0;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1C1C1C;
+            cursor: pointer;
+            min-width: 140px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            color: #1C1C1C;
+        }
+
+        .search-input::placeholder {
+            color: #8B96A5;
+        }
+
+        .search-button {
+            padding: 12px 25px;
+            background: #3498db;
+            border: none;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-button:hover {
+            background: #2980b9;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .action-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #1C1C1C;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .action-item:hover {
+            color: #3498db;
+        }
+
+        .action-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .action-text {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .cart-wrapper {
+            position: relative;
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 1440px) {
+            .header-alibaba {
+                width: 100%;
+                left: 0;
+                padding: 0 20px;
+            }
+            
+            .search-container {
+                width: 500px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .search-container {
+                width: 400px;
+            }
+            
+            .header-actions {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-alibaba {
+                height: auto;
+                padding: 15px 20px;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .search-container {
+                width: 100%;
+                order: 3;
+            }
+            
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .logo {
+                height: 35px;
+            }
+            
+            .header-actions {
+                gap: 15px;
+            }
+            
+            .category-dropdown {
+                min-width: 120px;
+                padding: 10px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-alibaba {
+                padding: 10px 15px;
+            }
+            
+            .logo-text {
+                font-size: 18px;
+            }
+            
+            .logo {
+                height: 30px;
+            }
+            
+            .header-actions {
+                gap: 10px;
+            }
+            
+            .action-text {
+                font-size: 10px;
+            }
+            
+            .category-dropdown {
+                min-width: 100px;
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+            
+            .search-input {
+                padding: 10px 12px;
+                font-size: 12px;
+            }
+            
+            .search-button {
+                padding: 10px 20px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header-alibaba">
+        <!-- Logo with Image -->
+        <div class="logo-container">
+            <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\Brand\logo-colored.png" alt="Ecommerce Logo" class="logo">
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <select class="category-dropdown">
+                <option>All category</option>
+                <option>Electronics</option>
+                <option>Clothing</option>
+                <option>Home & Garden</option>
+                <option>Sports</option>
+                <option>Automotive</option>
+            </select>
+            <input type="text" class="search-input" placeholder="Search">
+            <button class="search-button">Search</button>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="header-actions">
+            <div class="action-item">
+                <div class="action-icon">👤</div>
+                <div class="action-text">Profile</div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-icon">💬</div>
+                <div class="action-text">Message</div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-icon">📦</div>
+                <div class="action-text">Orders</div>
+            </div>
+            
+            <div class="cart-wrapper">
+                <div class="action-item">
+                    <div class="action-icon">🛒</div>
+                    <div class="action-text">My cart</div>
+                    <div class="cart-count">3</div>
+                </div>
+            </div>
+        </div>
+    </header>
+</body>
+</html>
+
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            padding: 150px 20px 20px;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* === HEADER STYLES === */
+        .header-alibaba {
+            position: absolute;
+            width: 1440px;
+            height: 86px;
+            left: 0px;
+            top: 0px;
+            background: #FFFFFF;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .logo-text span {
+            color: #3498db;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #FFFFFF;
+            border: 2px solid #E0E0E0;
+            border-radius: 6px;
+            overflow: hidden;
+            width: 600px;
+        }
+
+        .category-dropdown {
+            padding: 12px 20px;
+            background: #F8F9FA;
+            border: none;
+            border-right: 2px solid #E0E0E0;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1C1C1C;
+            cursor: pointer;
+            min-width: 140px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            color: #1C1C1C;
+        }
+
+        .search-input::placeholder {
+            color: #8B96A5;
+        }
+
+        .search-button {
+            padding: 12px 25px;
+            background: #3498db;
+            border: none;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-button:hover {
+            background: #2980b9;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .action-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #1C1C1C;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .action-item:hover {
+            color: #3498db;
+        }
+
+        .action-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .action-text {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .cart-wrapper {
+            position: relative;
+        }
+
+        /* === NAVIGATION BAR STYLES === */
+        .navbar-alibaba {
+            position: absolute;
+            width: 1440px;
+            height: 56px;
+            left: 0px;
+            top: 86px;
+            background: #2c3e50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 999;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-item {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-item.active {
+            background: #3498db;
+        }
+
+        .all-category {
+            background: #3498db;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .all-category:hover {
+            background: #2980b9;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dropdown:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-icon {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-dropdown:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 1440px) {
+            .header-alibaba,
+            .navbar-alibaba {
+                width: 100%;
+                left: 0;
+                padding: 0 20px;
+            }
+            
+            .search-container {
+                width: 500px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .search-container {
+                width: 400px;
+            }
+            
+            .header-actions {
+                gap: 20px;
+            }
+            
+            .nav-left {
+                gap: 20px;
+            }
+            
+            .nav-right {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-alibaba {
+                height: auto;
+                padding: 15px 20px;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .navbar-alibaba {
+                height: auto;
+                padding: 10px 20px;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .search-container {
+                width: 100%;
+                order: 3;
+            }
+            
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .logo {
+                height: 35px;
+            }
+            
+            .header-actions {
+                gap: 15px;
+            }
+            
+            .nav-left,
+            .nav-right {
+                gap: 10px;
+            }
+            
+            .nav-item {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+            
+            .all-category {
+                padding: 8px 15px;
+                font-size: 13px;
+            }
+            
+            .category-dropdown {
+                min-width: 120px;
+                padding: 10px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 200px 15px 20px;
+            }
+            
+            .header-alibaba,
+            .navbar-alibaba {
+                padding: 10px 15px;
+            }
+            
+            .logo-text {
+                font-size: 18px;
+            }
+            
+            .logo {
+                height: 30px;
+            }
+            
+            .header-actions {
+                gap: 10px;
+            }
+            
+            .action-text {
+                font-size: 10px;
+            }
+            
+            .nav-left,
+            .nav-right {
+                gap: 8px;
+            }
+            
+            .nav-item {
+                padding: 5px 10px;
+                font-size: 12px;
+            }
+            
+            .all-category {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+            
+            .category-dropdown {
+                min-width: 100px;
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+            
+            .search-input {
+                padding: 10px 12px;
+                font-size: 12px;
+            }
+            
+            .search-button {
+                padding: 10px 20px;
+                font-size: 12px;
+            }
+            
+            .nav-dropdown {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header-alibaba">
+        <!-- Logo with Image -->
+        <div class="logo-container">
+            <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\Brand\logo-colored.png" alt="Ecommerce Logo" class="logo">
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <select class="category-dropdown">
+                <option>All category</option>
+                <option>Electronics</option>
+                <option>Clothing</option>
+                <option>Home & Garden</option>
+                <option>Sports</option>
+                <option>Automotive</option>
+            </select>
+            <input type="text" class="search-input" placeholder="Search">
+            <button class="search-button">Search</button>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="header-actions">
+            <div class="action-item">
+                <div class="action-icon">👤</div>
+                <div class="action-text">Profile</div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-icon">💬</div>
+                <div class="action-text">Message</div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-icon">📦</div>
+                <div class="action-text">Orders</div>
+            </div>
+            
+            <div class="cart-wrapper">
+                <div class="action-item">
+                    <div class="action-icon">🛒</div>
+                    <div class="action-text">My cart</div>
+                    <div class="cart-count">3</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar-alibaba">
+        <!-- Left Navigation Items -->
+        <div class="nav-left">
+            <div class="nav-item all-category">
+                <span>All category</span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+            <div class="nav-item active">Hot offers</div>
+            <div class="nav-item">Gift boxes</div>
+            <div class="nav-item">Projects</div>
+            <div class="nav-item">Menu item</div>
+            <div class="nav-item">Help</div>
+        </div>
+
+        <!-- Right Navigation Items -->
+        <div class="nav-right">
+            <div class="nav-dropdown">
+                <span>English, USD</span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+            <div class="nav-dropdown">
+                <span>Ship to</span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+        </div>
+    </nav>
+
+   
+</body>
+</html>
+
+
+<head>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            padding: 220px 20px 20px;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* === HEADER STYLES === */
+        .header-alibaba {
+            position: absolute;
+            width: 1440px;
+            height: 86px;
+            left: 0px;
+            top: 0px;
+            background: #FFFFFF;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .logo-text span {
+            color: #3498db;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #FFFFFF;
+            border: 2px solid #E0E0E0;
+            border-radius: 6px;
+            overflow: hidden;
+            width: 600px;
+        }
+
+        .category-dropdown {
+            padding: 12px 20px;
+            background: #F8F9FA;
+            border: none;
+            border-right: 2px solid #E0E0E0;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1C1C1C;
+            cursor: pointer;
+            min-width: 140px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            color: #1C1C1C;
+        }
+
+        .search-input::placeholder {
+            color: #8B96A5;
+        }
+
+        .search-button {
+            padding: 12px 25px;
+            background: #3498db;
+            border: none;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-button:hover {
+            background: #2980b9;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .action-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #1C1C1C;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .action-item:hover {
+            color: #3498db;
+        }
+
+        .action-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .action-text {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .cart-wrapper {
+            position: relative;
+        }
+
+        /* === NAVIGATION BAR STYLES === */
+        .navbar-alibaba {
+            position: absolute;
+            width: 1440px;
+            height: 56px;
+            left: 0px;
+            top: 86px;
+            background: #2c3e50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 999;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-item {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-item.active {
+            background: #3498db;
+        }
+
+        .all-category {
+            background: #3498db;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .all-category:hover {
+            background: #2980b9;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dropdown:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-icon {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-dropdown:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        /* === BREADCRUMB STYLES === */
+        .breadcrumb {
+            position: absolute;
+            width: 1440px;
+            height: 64px;
+            left: 0px;
+            top: 142px;
+            background: #FFFFFF;
+            border-bottom: 1px solid #E0E0E0;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            z-index: 998;
+        }
+
+        .breadcrumb-list {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 8px;
+        }
+
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .breadcrumb-link {
+            text-decoration: none;
+            font-size: 14px;
+            color: #8B96A5;
+            transition: all 0.3s ease;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .breadcrumb-link:hover {
+            color: #3498db;
+            background: #F8F9FA;
+        }
+
+        .breadcrumb-link.active {
+            color: #1C1C1C;
+            font-weight: 500;
+        }
+
+        .breadcrumb-separator {
+            color: #8B96A5;
+            font-size: 12px;
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 1440px) {
+            .header-alibaba,
+            .navbar-alibaba,
+            .breadcrumb {
+                width: 100%;
+                left: 0;
+                padding: 0 20px;
+            }
+            
+            .search-container {
+                width: 500px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .search-container {
+                width: 400px;
+            }
+            
+            .header-actions {
+                gap: 20px;
+            }
+            
+            .nav-left {
+                gap: 20px;
+            }
+            
+            .nav-right {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 250px 20px 20px;
+            }
+            
+            .header-alibaba {
+                height: auto;
+                padding: 15px 20px;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .navbar-alibaba {
+                height: auto;
+                padding: 10px 20px;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .breadcrumb {
+                height: auto;
+                padding: 15px 20px;
+            }
+            
+            .search-container {
+                width: 100%;
+                order: 3;
+            }
+            
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .logo {
+                height: 35px;
+            }
+            
+            .header-actions {
+                gap: 15px;
+            }
+            
+            .nav-left,
+            .nav-right {
+                gap: 10px;
+            }
+            
+            .nav-item {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+            
+            .all-category {
+                padding: 8px 15px;
+                font-size: 13px;
+            }
+            
+            .category-dropdown {
+                min-width: 120px;
+                padding: 10px 15px;
+            }
+            
+            .breadcrumb-list {
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 280px 15px 20px;
+            }
+            
+            .header-alibaba,
+            .navbar-alibaba,
+            .breadcrumb {
+                padding: 10px 15px;
+            }
+            
+            .logo-text {
+                font-size: 18px;
+            }
+            
+            .logo {
+                height: 30px;
+            }
+            
+            .header-actions {
+                gap: 10px;
+            }
+            
+            .action-text {
+                font-size: 10px;
+            }
+            
+            .nav-left,
+            .nav-right {
+                gap: 8px;
+            }
+            
+            .nav-item {
+                padding: 5px 10px;
+                font-size: 12px;
+            }
+            
+            .all-category {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+            
+            .category-dropdown {
+                min-width: 100px;
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+            
+            .search-input {
+                padding: 10px 12px;
+                font-size: 12px;
+            }
+            
+            .search-button {
+                padding: 10px 20px;
+                font-size: 12px;
+            }
+            
+            .nav-dropdown {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+            
+            .breadcrumb-link {
+                font-size: 12px;
+                padding: 3px 6px;
+            }
+            
+            .breadcrumb-separator {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header-alibaba">
+        <!-- Logo with Image -->
+        <div class="logo-container">
+            <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\Brand\logo-colored.png" alt="Ecommerce Logo" class="logo">
+            
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <select class="category-dropdown">
+                <option>All category</option>
+                <option>Electronics</option>
+                <option>Clothing</option>
+                <option>Home & Garden</option>
+                <option>Sports</option>
+                <option>Automotive</option>
+            </select>
+            <input type="text" class="search-input" placeholder="Search">
+            <button class="search-button">Search</button>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="header-actions">
+            <div class="action-item">
+                <div class="action-icon">👤</div>
+                <div class="action-text">Profile</div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-icon">💬</div>
+                <div class="action-text">Message</div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-icon">📦</div>
+                <div class="action-text">Orders</div>
+            </div>
+            
+            <div class="cart-wrapper">
+                <div class="action-item">
+                    <div class="action-icon">🛒</div>
+                    <div class="action-text">My cart</div>
+                    <div class="cart-count">3</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar-alibaba">
+        <!-- Left Navigation Items -->
+        <div class="nav-left">
+            <div class="nav-item all-category">
+                <span>All category</span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+            <div class="nav-item active">Hot offers</div>
+            <div class="nav-item">Gift boxes</div>
+            <div class="nav-item">Projects</div>
+            <div class="nav-item">Menu item</div>
+            <div class="nav-item">Help</div>
+        </div>
+
+        <!-- Right Navigation Items -->
+        <div class="nav-right">
+            <div class="nav-dropdown">
+                <span>English, USD</span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+            <div class="nav-dropdown">
+                <span>Ship to</span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb">
+        <ul class="breadcrumb-list">
+            <li class="breadcrumb-item">
+                <a href="#" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator">/</span>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#" class="breadcrumb-link">Clothings</a>
+                <span class="breadcrumb-separator">/</span>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#" class="breadcrumb-link">Men's wear</a>
+                <span class="breadcrumb-separator">/</span>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#" class="breadcrumb-link active">Summer clothing</a>
+            </li>
+        </ul>
+    </nav>
+
+   
+</body>
+</html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Product Listing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            position: relative;
+            min-height: 2500px;
+        }
+
+        /* === HEADER STYLES === */
+        .header-alibaba {
+            position: absolute;
+            width: 1440px;
+            height: 86px;
+            left: 0px;
+            top: 0px;
+            background: #FFFFFF;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .logo-text span {
+            color: #3498db;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #FFFFFF;
+            border: 2px solid #E0E0E0;
+            border-radius: 6px;
+            overflow: hidden;
+            width: 600px;
+        }
+
+        .category-dropdown {
+            padding: 12px 20px;
+            background: #F8F9FA;
+            border: none;
+            border-right: 2px solid #E0E0E0;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1C1C1C;
+            cursor: pointer;
+            min-width: 140px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            color: #1C1C1C;
+        }
+
+        .search-input::placeholder {
+            color: #8B96A5;
+        }
+
+        .search-button {
+            padding: 12px 25px;
+            background: #3498db;
+            border: none;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-button:hover {
+            background: #2980b9;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .action-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #1C1C1C;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .action-item:hover {
+            color: #3498db;
+        }
+
+        .action-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .action-text {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .cart-wrapper {
+            position: relative;
+        }
+
+        /* === NAVIGATION BAR STYLES === */
+        .navbar-alibaba {
+            position: absolute;
+            width: 1440px;
+            height: 56px;
+            left: 0px;
+            top: 86px;
+            background: #2c3e50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 999;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-item {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-item.active {
+            background: #3498db;
+        }
+
+        .all-category {
+            background: #3498db;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .all-category:hover {
+            background: #2980b9;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dropdown:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-icon {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-dropdown:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        /* === BREADCRUMB STYLES === */
+        .breadcrumb {
+            position: absolute;
+            width: 1440px;
+            height: 64px;
+            left: 0px;
+            top: 142px;
+            background: #FFFFFF;
+            border-bottom: 1px solid #E0E0E0;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            z-index: 998;
+        }
+
+        .breadcrumb-list {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 8px;
+        }
+
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .breadcrumb-link {
+            text-decoration: none;
+            font-size: 14px;
+            color: #8B96A5;
+            transition: all 0.3s ease;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .breadcrumb-link:hover {
+            color: #3498db;
+            background: #F8F9FA;
+        }
+
+        .breadcrumb-link.active {
+            color: #1C1C1C;
+            font-weight: 500;
+        }
+
+        .breadcrumb-separator {
+            color: #8B96A5;
+            font-size: 12px;
+        }
+
+        /* === SIDEBAR STYLES === */
+        .sidebar {
+            position: absolute;
+            width: 240px;
+            height: 1011px;
+            left: 132px;
+            top: 207px;
+            background: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .filter-section {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #E0E0E0;
+            padding-bottom: 20px;
+        }
+
+        .filter-section:last-child {
+            border-bottom: none;
+        }
+
+        .filter-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1C1C1C;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .see-all {
+            font-size: 12px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .filter-list {
+            list-style: none;
+        }
+
+        .filter-item {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-checkbox {
+            width: 16px;
+            height: 16px;
+            border: 2px solid #E0E0E0;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .filter-label {
+            font-size: 14px;
+            color: #1C1C1C;
+            cursor: pointer;
+        }
+
+        .price-range {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .price-input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #E0E0E0;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .price-slider {
+            width: 100%;
+            height: 4px;
+            background: #E0E0E0;
+            border-radius: 2px;
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .price-slider::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 70%;
+            height: 100%;
+            background: #3498db;
+            border-radius: 2px;
+        }
+
+        .apply-button {
+            width: 100%;
+            padding: 10px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .apply-button:hover {
+            background: #2980b9;
+        }
+
+        .rating-stars {
+            color: #FFD700;
+            font-size: 14px;
+        }
+
+        /* === CONTENT TOP STYLES === */
+        .content-top {
+            position: absolute;
+            width: 926px;
+            height: 62px;
+            left: 384px;
+            top: 206px;
+            background: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .items-count {
+            font-size: 16px;
+            color: #1C1C1C;
+            font-weight: 500;
+        }
+
+        .content-filters {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .filter-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #1C1C1C;
+            cursor: pointer;
+        }
+
+        .featured-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #1C1C1C;
+            cursor: pointer;
+        }
+
+        .toggle-switch {
+            width: 40px;
+            height: 20px;
+            background: #E0E0E0;
+            border-radius: 10px;
+            position: relative;
+            transition: background 0.3s ease;
+        }
+
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-switch.active {
+            background: #3498db;
+        }
+
+        .toggle-switch.active::before {
+            transform: translateX(20px);
+        }
+
+        /* === FILTERS APPLIED STYLES === */
+        .filters-applied {
+            position: absolute;
+            width: 728px;
+            height: 32px;
+            left: 386px;
+            top: 288px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-tag {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: #e3f2fd;
+            border: 1px solid #3498db;
+            border-radius: 16px;
+            font-size: 12px;
+            color: #3498db;
+            font-weight: 500;
+        }
+
+        .filter-tag-remove {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .clear-all {
+            font-size: 12px;
+            color: #3498db;
+            font-weight: 500;
+            cursor: pointer;
+            margin-left: auto;
+        }
+
+        /* === PRODUCT GRID STYLES === */
+        .product-grid {
+            position: absolute;
+            width: 926px;
+            left: 384px;
+            top: 340px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .product-card {
+            background: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 405px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: #F7F7F7;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .product-pricing {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .current-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #e74c3c;
+        }
+
+        .original-price {
+            font-size: 14px;
+            color: #8B96A5;
+            text-decoration: line-through;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .rating-value {
+            font-size: 14px;
+            color: #1C1C1C;
+            font-weight: 500;
+        }
+
+        .product-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1C1C1C;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 10px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background: #2980b9;
+        }
+
+        /* === PAGINATION STYLES === */
+        .pagination-container {
+            position: absolute;
+            width: 926px;
+            left: 384px;
+            top: 1625px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+        }
+
+        .items-per-page {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .selectbox {
+            width: 125px;
+            height: 40px;
+            padding: 0 15px;
+            border: 1px solid #E0E0E0;
+            border-radius: 4px;
+            background: #FFFFFF;
+            font-size: 14px;
+            color: #1C1C1C;
+            cursor: pointer;
+        }
+
+        .pagination {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .page-number {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #E0E0E0;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #1C1C1C;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .page-number:hover {
+            background: #f8f9fa;
+            border-color: #3498db;
+        }
+
+        .page-number.active {
+            background: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+
+        /* === NEWSLETTER STYLES === */
+        .newsletter-alibaba {
+            position: absolute;
+            width: 1440px;
+            height: 190px;
+            left: 0px;
+            top: 1832px;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .newsletter-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .newsletter-text {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .newsletter-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .newsletter-description {
+            font-size: 16px;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .email-input {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            width: 300px;
+            background-color: white;
+            color: #333;
+        }
+
+        .email-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+        }
+
+        .email-input::placeholder {
+            color: #999;
+        }
+
+        .subscribe-button {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .subscribe-button:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+        }
+
+        /* === FOOTER STYLES === */
+        .footer-alibaba {
+            position: absolute;
+            width: 1440px;
+            height: 324px;
+            left: 0px;
+            top: 2022px;
+            background: #FFFFFF;
+            padding: 50px 100px 30px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-about {
+            max-width: 300px;
+        }
+
+        .footer-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo {
+            height: 30px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .footer-logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .footer-description {
+            font-size: 14px;
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .app-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .app-button {
+            padding: 8px 15px;
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #2c3e50;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .app-button:hover {
+            background: #e9ecef;
+            border-color: #3498db;
+        }
+
+        .footer-column h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #7f8c8d;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #3498db;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .language-selector {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #2c3e50;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .language-selector:hover {
+            background: #e9ecef;
+            border-color: #3498db;
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 1440px) {
+            .header-alibaba,
+            .navbar-alibaba,
+            .breadcrumb,
+            .newsletter-alibaba,
+            .footer-alibaba {
+                width: 100%;
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header-alibaba">
+        <div class="logo-container">
+            <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\Brand\logo-colored.png" alt="Ecommerce Logo" class="logo">
+          
+        </div>
+        <div class="search-container">
+            <select class="category-dropdown">
+                <option>All category</option>
+                <option>Electronics</option>
+                <option>Clothing</option>
+            </select>
+            <input type="text" class="search-input" placeholder="Search">
+            <button class="search-button">Search</button>
+        </div>
+        <div class="header-actions">
+            <div class="action-item">
+                <div class="action-icon">👤</div>
+                <div class="action-text">Profile</div>
+            </div>
+            <div class="action-item">
+                <div class="action-icon">💬</div>
+                <div class="action-text">Message</div>
+            </div>
+            <div class="action-item">
+                <div class="action-icon">📦</div>
+                <div class="action-text">Orders</div>
+            </div>
+            <div class="cart-wrapper">
+                <div class="action-item">
+                    <div class="action-icon">🛒</div>
+                    <div class="action-text">My cart</div>
+                    <div class="cart-count">3</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar-alibaba">
+        <div class="nav-left">
+            <div class="nav-item all-category">
+                <span>All category</span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+            <div class="nav-item active">Hot offers</div>
+            <div class="nav-item">Gift boxes</div>
+            <div class="nav-item">Projects</div>
+            <div class="nav-item">Menu item</div>
+            <div class="nav-item">Help</div>
+        </div>
+        <div class="nav-right">
+            <div class="nav-dropdown">
+                <span>English, USD</span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+            <div class="nav-dropdown">
+                <span>Ship to</span>
+                <span class="dropdown-icon">▼</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <ul class="breadcrumb-list">
+            <li class="breadcrumb-item">
+                <a href="#" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator">/</span>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#" class="breadcrumb-link">Clothings</a>
+                <span class="breadcrumb-separator">/</span>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#" class="breadcrumb-link">Men's wear</a>
+                <span class="breadcrumb-separator">/</span>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#" class="breadcrumb-link active">Summer clothing</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Sidebar Filters -->
+    <aside class="sidebar">
+        <div class="filter-section">
+            <div class="filter-title">
+                Category
+                <a href="#" class="see-all">See all</a>
+            </div>
+            <ul class="filter-list">
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label">Mobile accessory</label></li>
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label">Electronics</label></li>
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label">Smartphones</label></li>
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label">Modern tech</label></li>
+            </ul>
+        </div>
+        <div class="filter-section">
+            <div class="filter-title">
+                Brands
+                <a href="#" class="see-all">See all</a>
+            </div>
+            <ul class="filter-list">
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label">Samsung</label></li>
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label">Apple</label></li>
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label">Huawei</label></li>
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label">Pocco</label></li>
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label">Lenovo</label></li>
+            </ul>
+        </div>
+        <div class="filter-section">
+            <div class="filter-title">
+                Features
+                <a href="#" class="see-all">See all</a>
+            </div>
+            <ul class="filter-list">
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label">Metallic</label></li>
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label">Plastic cover</label></li>
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label">8GB Ram</label></li>
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label">Super power</label></li>
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label">Large Memory</label></li>
+            </ul>
+        </div>
+        <div class="filter-section">
+            <div class="filter-title">Price range</div>
+            <div class="price-range">
+                <input type="text" class="price-input" placeholder="Min" value="0">
+                <input type="text" class="price-input" placeholder="Max" value="999999">
+            </div>
+            <div class="price-slider"></div>
+            <button class="apply-button">Apply</button>
+        </div>
+        <div class="filter-section">
+            <div class="filter-title">Condition</div>
+            <ul class="filter-list">
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label">Any</label></li>
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label">Refurbished</label></li>
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label">Brand new</label></li>
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label">Old items</label></li>
+            </ul>
+        </div>
+        <div class="filter-section">
+            <div class="filter-title">Ratings</div>
+            <ul class="filter-list">
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label"><span class="rating-stars">★★★★★</span> 5 Stars</label></li>
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label"><span class="rating-stars">★★★★☆</span> 4 Stars & above</label></li>
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label"><span class="rating-stars">★★★☆☆</span> 3 Stars & above</label></li>
+            </ul>
+        </div>
+        <div class="filter-section">
+            <div class="filter-title">Manufacturer</div>
+            <ul class="filter-list">
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label">Samsung</label></li>
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label">Apple</label></li>
+                <li class="filter-item"><div class="filter-checkbox"></div><label class="filter-label">Huawei</label></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Content Top Bar -->
+    <div class="content-top">
+        <div class="items-count">12,911 items in Mobile accessory</div>
+        <div class="content-filters">
+            <div class="filter-toggle">
+                <span>Verified only</span>
+                <div class="toggle-switch active"></div>
+            </div>
+            <div class="featured-toggle">
+                <span>Featured</span>
+                <div class="toggle-switch"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Applied Filters -->
+    <div class="filters-applied">
+        <div class="filter-tag">Samsung <span class="filter-tag-remove">×</span></div>
+        <div class="filter-tag">Apple <span class="filter-tag-remove">×</span></div>
+        <div class="filter-tag">Poco <span class="filter-tag-remove">×</span></div>
+        <div class="filter-tag">Metallic <span class="filter-tag-remove">×</span></div>
+        <div class="filter-tag">4 star <span class="filter-tag-remove">×</span></div>
+        <div class="filter-tag">3 star <span class="filter-tag-remove">×</span></div>
+        <div class="clear-all">Clear all filter</div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="product-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 33.png" alt="GoPro HERO6">
+            </div>
+            <div class="product-pricing">
+                <span class="current-price">$99.50</span>
+                <span class="original-price">$1128.00</span>
+            </div>
+            <div class="product-rating">
+                <span class="rating-value">7.5</span>
+            </div>
+            <h3 class="product-title">GoPro HERO6 4K Action Camera - Black</h3>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 32.png" alt="GoPro HERO6">
+            </div>
+            <div class="product-pricing">
+                <span class="current-price">$99.50</span>
+                <span class="original-price">$1128.00</span>
+            </div>
+            <div class="product-rating">
+                <span class="rating-value">5.9</span>
+            </div>
+            <h3 class="product-title">GoPro HERO6 4K Action Camera - Black</h3>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 23.png" alt="GoPro HERO6">
+            </div>
+            <div class="product-pricing">
+                <span class="current-price">$99.50</span>
+                <span class="original-price">$1128.00</span>
+            </div>
+            <div class="product-rating">
+                <span class="rating-value">7.5</span>
+            </div>
+            <h3 class="product-title">GoPro HERO6 4K Action Camera - Black</h3>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+                <!-- Product 4 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 34.png" alt="GoPro HERO6">
+            </div>
+            <div class="product-pricing">
+                <span class="current-price">$99.50</span>
+                <span class="original-price">$1128.00</span>
+            </div>
+            <div class="product-rating">
+                <span class="rating-value">7.5</span>
+            </div>
+            <h3 class="product-title">GoPro HERO6 4K Action Camera - Black</h3>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\6.png" alt="GoPro HERO6">
+            </div>
+            <div class="product-pricing">
+                <span class="current-price">$99.50</span>
+                <span class="original-price">$1128.00</span>
+            </div>
+            <div class="product-rating">
+                <span class="rating-value">7.5</span>
+            </div>
+            <h3 class="product-title">GoPro HERO6 4K Action Camera - Black</h3>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 33.png" alt="GoPro HERO6">
+            </div>
+            <div class="product-pricing">
+                <span class="current-price">$99.50</span>
+                <span class="original-price">$1128.00</span>
+            </div>
+            <div class="product-rating">
+                <span class="rating-value">7.5</span>
+            </div>
+            <h3 class="product-title">GoPro HERO6 4K Action Camera - Black</h3>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 34.png" alt="GoPro HERO6">
+            </div>
+            <div class="product-pricing">
+                <span class="current-price">$99.50</span>
+                <span class="original-price">$1128.00</span>
+            </div>
+            <div class="product-rating">
+                <span class="rating-value">7.5</span>
+            </div>
+            <h3 class="product-title">GoPro HERO6 4K Action Camera - Black</h3>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 32.png" alt="GoPro HERO6">
+            </div>
+            <div class="product-pricing">
+                <span class="current-price">$99.50</span>
+                <span class="original-price">$1128.00</span>
+            </div>
+            <div class="product-rating">
+                <span class="rating-value">7.5</span>
+            </div>
+            <h3 class="product-title">GoPro HERO6 4K Action Camera - Black</h3>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Image\tech\image 23.png" alt="GoPro HERO6">
+            </div>
+            <div class="product-pricing">
+                <span class="current-price">$99.50</span>
+                <span class="original-price">$1128.00</span>
+            </div>
+            <div class="product-rating">
+                <span class="rating-value">7.5</span>
+            </div>
+            <h3 class="product-title">GoPro HERO6 4K Action Camera - Black</h3>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-container">
+        <div class="items-per-page">
+            <span>Show</span>
+            <select class="selectbox">
+                <option>10</option>
+                <option>20</option>
+                <option>50</option>
+            </select>
+        </div>
+        <div class="pagination">
+            <div class="page-number active">1</div>
+            <div class="page-number">2</div>
+            <div class="page-number">3</div>
+        </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="newsletter-alibaba">
+        <div class="newsletter-content">
+            <div class="newsletter-text">
+                <h2 class="newsletter-title">Subscribe on our newsletter</h2>
+                <p class="newsletter-description">Get daily news on upcoming offers from many suppliers all over the world</p>
+            </div>
+            <form class="newsletter-form">
+                <input type="email" class="email-input" placeholder="Email" required>
+                <button type="submit" class="subscribe-button">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-alibaba">
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo-container">
+                    <img src="C:\Users\SAMee\OneDrive\Desktop\assets\assets\Layout\Brand\logo-colored.png" alt="Ecommerce Logo" class="footer-logo">
+                    <div class="footer-logo-text">Ecommerce</div>
+                </div>
+                <p class="footer-description">Best information about the company gies here but now lorem ipsum is</p>
+                <div class="app-buttons">
+                    <button class="app-button">Get app</button>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>About</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Find store</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Blogs</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Partnership</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Find store</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Blogs</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Information</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Money Refund</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Contact us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>For users</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Register</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="#">My Orders</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">© 2023 Ecommerce.</div>
+            <div class="language-selector">
+                <span>English</span>
+                <span>▼</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+           
